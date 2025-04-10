@@ -29,7 +29,7 @@ public abstract class Ranged extends Character
     }
     private void shootProjectile(){
         double angle = Math.toDegrees(Math.atan2(closest.getY()-getY(), closest.getX()-getX()));
-        Bullet a = new Bullet();
+        Bullet a = new Bullet(team);
         int offsetX = (int)(25*Math.cos(Math.toRadians(angle)));
         int offsetY = (int)(25*Math.sin(Math.toRadians(angle)));
         getWorld().addObject(a,getX()+offsetX,getY()+offsetY);
