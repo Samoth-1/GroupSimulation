@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bullet extends Actor
 {
-    int team;
-    int beam;
+    private int team;
+    private int beam;
     public Bullet(int team){
         this.team = team;
         if(team == 1) beam = 2;
