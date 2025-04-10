@@ -6,6 +6,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
+
+    private int atk = 90;
 public abstract class Ranged extends Character
 {
     public Ranged(int team, int pos){
@@ -22,7 +24,6 @@ public abstract class Ranged extends Character
             shootProjectile();
         }
     }
-    int atk = 90;
     private void attackspeed(){
         if(atk>0)atk--;
         else atk=90;
