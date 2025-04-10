@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class Ranged extends Character
 {
-    public Ranged(int team, int pos, int range, int hp, int damage, int speed){
-        super(team,pos,range,hp,damage,speed);
+    public Ranged(int team, int pos){
+        super(team,pos);
     }
     public void act()
     {
