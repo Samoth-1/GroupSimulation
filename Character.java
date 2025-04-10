@@ -23,6 +23,7 @@ public abstract class Character extends Actor
         this.team = team;
         this.pos = pos;
         this.hp=hp;
+
         
         //setImage
     }
@@ -54,12 +55,8 @@ public abstract class Character extends Actor
             }
         }
         if(closest!=null&&shortestDistance>range){
-            if (this.getX() == closest.getX())
-            {
-                turnTowards(getX(), closest.getY());
-            }
-            turnTowards(closest.getX(), getY());
-            move(48);
+            turnTowards(closest.getX(),closest.getY());
+            move(1);
             inRange=false;
         }else if(closest!=null&&shortestDistance<=range){
             turnTowards(closest.getX(),closest.getY());
@@ -68,7 +65,10 @@ public abstract class Character extends Actor
     }
     protected abstract void attack();
     //seperate ranged and melee
+
     public abstract void upgrade();
+
+
 
     protected void dealDamage(int d){
         hp-=d;
@@ -77,6 +77,7 @@ public abstract class Character extends Actor
     public int getTeam(){
         return team;
     }
+
     public boolean isRanged()
     {
         return ranged;
@@ -86,3 +87,4 @@ public abstract class Character extends Actor
         return canUpgrade;
     }
 }
+
