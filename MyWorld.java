@@ -16,6 +16,42 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(1024, 800, 1); 
+        drawChessBoard();
+        
+    }
+    
+    public void drawChessBoard()
+    {
+        //Draw square cells with side length of 96. The x value start from 128, end at 800.
+        //The y value start at 16, and end at 688
+        int count = 0;
+        for(int Y = 16; Y <= 688; Y += 96)
+        {
+            for(int X = 128; X <= 800; X += 96)
+            {
+                if (count % 2 == 0)
+                {
+                    getBackground().setColor(Color.BLACK);
+                }
+                else
+                {
+                    getBackground().setColor(Color.WHITE);
+                }
+                getBackground().fillRect(X, Y, 96, 96);
+                count ++;
+            }
+            count ++;
+        }
+        
+        getBackground().setColor(Color.BLACK);
+        for(int i = 128; i <= 896; i += 96)
+        {
+            getBackground().drawLine(i, 16, i, 784);
+        }
+        for(int i = 16; i <= 784; i += 96)
+        {
+            getBackground().drawLine(128, i, 896, i);
+        }
     }
 }

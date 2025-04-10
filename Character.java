@@ -8,21 +8,22 @@ import java.util.*;
  */
 public abstract class Character extends Actor
 {
-    int team;// team 1 or 2
-    int pos; // which square on field
+    protected int team;// team 1 or 2
+    protected int pos; // which square on field
     
-    int range;
-    int damage;
-    int hp;
-    int speed;
-    boolean inRange;
-    
-    public Character(int team, int pos, int range, int hp, int damage, int speed){
+    protected int range;
+    protected int damage;
+    protected int hp;
+    protected int speed;
+    protected boolean inRange;
+    protected boolean ranged;
+    protected boolean canUpgrade;
+    protected int price;
+    public Character(int team, int pos){
         this.team = team;
         this.pos = pos;
         this.hp=hp;
-        this.damage=damage;
-        this.speed=speed;
+
         
         //setImage
     }
@@ -65,6 +66,10 @@ public abstract class Character extends Actor
     protected abstract void attack();
     //seperate ranged and melee
 
+    public abstract void upgrade();
+
+
+
     protected void dealDamage(int d){
         hp-=d;
         if(hp<=0) getWorld().removeObject(this);
@@ -72,4 +77,14 @@ public abstract class Character extends Actor
     public int getTeam(){
         return team;
     }
+
+    public boolean isRanged()
+    {
+        return ranged;
+    }
+    public boolean canUpgrade()
+    {
+        return canUpgrade;
+    }
 }
+
