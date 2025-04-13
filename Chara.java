@@ -23,9 +23,6 @@ public abstract class Chara extends Actor
         this.team = team;
         this.pos = pos;
         this.hp=hp;
-
-        
-        //setImage
     }
     ArrayList<Chara> enemies;
     public void addedToWorld(){
@@ -40,6 +37,7 @@ public abstract class Chara extends Actor
     {
         target();
         attack();
+        ability();
     }
     Chara closest;
     private void target(){
@@ -64,12 +62,8 @@ public abstract class Chara extends Actor
         }
     }
     protected abstract void attack();
-    //seperate ranged and melee
-
+    protected abstract void ability();
     public abstract void upgrade();
-
-
-
     protected void dealDamage(int d){
         hp-=d;
         if(hp<=0) getWorld().removeObject(this);
