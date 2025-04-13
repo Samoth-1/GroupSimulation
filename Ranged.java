@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 
     private int atk = 90;
+    protected int atkspeed = 90;
 public abstract class Ranged extends Chara
 {
     public Ranged(int team, int pos){
@@ -26,7 +27,7 @@ public abstract class Ranged extends Chara
     }
     private void attackspeed(){
         if(atk>0)atk--;
-        else atk=90;
+        else atk=atkspeed;
     }
     protected void shootProjectile(){
         double angle = Math.toDegrees(Math.atan2(closest.getY()-getY(), closest.getX()-getX()));
