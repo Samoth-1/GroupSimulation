@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class Character here.
+ * Write a description of class Chara here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public abstract class Character extends Actor
+public abstract class Chara extends Actor
 {
     protected int team;// team 1 or 2
     protected int pos; // which square on field
@@ -19,7 +19,7 @@ public abstract class Character extends Actor
     protected boolean ranged;
     protected boolean canUpgrade;
     protected int price;
-    public Character(int team, int pos){
+    public Chara(int team, int pos){
         this.team = team;
         this.pos = pos;
         this.hp=hp;
@@ -27,10 +27,10 @@ public abstract class Character extends Actor
         
         //setImage
     }
-    ArrayList<Character> enemies;
+    ArrayList<Chara> enemies;
     public void addedToWorld(){
-        enemies = new ArrayList<Character>();
-        for(Character c:getWorld().getObjects(Character.class)){
+        enemies = new ArrayList<Chara>();
+        for(Chara c:getWorld().getObjects(Chara.class)){
             if(c.getTeam()!=team){
                 enemies.add(c);
             }
@@ -41,11 +41,11 @@ public abstract class Character extends Actor
         target();
         attack();
     }
-    Character closest;
+    Chara closest;
     private void target(){
         closest = null;
         int shortestDistance = Integer.MAX_VALUE;
-        for(Character c:enemies){
+        for(Chara c:enemies){
             int dx = c.getX()-getX();
             int dy = c.getY()-getY();
             int distance = (int)Math.sqrt(dx*dx+dy*dy);
