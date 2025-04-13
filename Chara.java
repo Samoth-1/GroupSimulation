@@ -80,5 +80,8 @@ public abstract class Chara extends Actor
     {
         return canUpgrade;
     }
+    public int getHp(){
+        return hp;
+    }
 }
 
