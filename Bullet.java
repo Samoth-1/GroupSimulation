@@ -18,7 +18,7 @@ public class Bullet extends Actor
     public void act()
     {
         move(5);
-        Character a = (Character)getOneIntersectingObject(Character.class);
+        Chara a = (Character)getOneIntersectingObject(Chara.class);
         if (isAtEdge()) {
             getWorld().removeObject(this);
         }
