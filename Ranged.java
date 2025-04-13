@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 
     private int atk = 90;
-public abstract class Ranged extends Character
+public abstract class Ranged extends Chara
 {
     public Ranged(int team, int pos){
         super(team,pos);
