@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
     private int atk = 90;
-public abstract class Melee extends Character
+public abstract class Melee extends Chara
 {
     public Melee(int team, int pos){
         super(team,pos);
