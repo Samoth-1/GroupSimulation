@@ -28,7 +28,7 @@ public abstract class Ranged extends Chara
         if(atk>0)atk--;
         else atk=90;
     }
-    private void shootProjectile(){
+    protected void shootProjectile(){
         double angle = Math.toDegrees(Math.atan2(closest.getY()-getY(), closest.getX()-getX()));
         Bullet a = new Bullet(team);
         int offsetX = (int)(25*Math.cos(Math.toRadians(angle)));
