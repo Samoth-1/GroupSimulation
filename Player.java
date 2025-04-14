@@ -13,7 +13,10 @@ public abstract class Player extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     protected int gold;
-    protected ArrayList <Character> myCharacters;
+    protected ArrayList <Champion> myCharacters = new ArrayList <Champion>();
+    protected ArrayList <Integer> positions = new ArrayList <Integer>();
+    protected ArrayList <Champion> meleeWishList = new ArrayList <Champion>();
+    protected ArrayList <Champion> rangedWishList = new ArrayList <Champion>();
     protected int actCount;
     protected int type;
     protected int side;
@@ -21,64 +24,48 @@ public abstract class Player extends Actor
     {
         this.gold = gold;
         this.type = type;
-        
+        this.side = side;
     }
-    
+
     public abstract void formation();
-    
-    public void act()
-    {
-        if (actCount % 120 == 0)
-        {
-            gold += 50;
-        }
-        
-    }
-    
-    public abstract void evolve();
-    
+
     public void findMyTeam()
     {
-        for (Character c : getWorld().getObjects(Character.class))
+        for (Champion c : myCharacters)
         {
-            if (c.getTeam() == type)
-            {
-                myCharacters.add(c);
-            }
             if (c == null)
             {
                 myCharacters.remove(c);
             }
         }
     }
-    
-    public abstract Character buyCharacter();
 
     public int getGold()
     {
         return gold;
     }
-    
-    //convert position number to actual coordinate
-    public int convertX(int position)
+
+    public int convertX(int position) {
+        int col = position % 8;
+        return 128 + col * 96 + 48;  
+    }
+
+    public int convertY(int position) {
+        int row = position / 8;
+        return 16 + row * 96 + 48;
+    }
+
+    protected int index = 0;
+    public void spawn()
     {
-  
-        int X = 128 + (position % 8) * 96 - 48;
+
         
-        return X;
-    }
-    
-    public int convertY(int position)
-    {
-        int Y;
-        if ((double)position / 8 == position / 8)
+        if (index < myCharacters.size() && actCount % 30 == 0)
         {
-            Y = 16 + position / 8 * 96 + 48;
+            getWorld().addObject(myCharacters.get(index), convertX(positions.get(index)), convertY(positions.get(index)));
+            index += 1;
         }
-        else
-        {
-            Y = 16 + (position / 8 + 1) + 48;
-        }
-        return Y;
+        actCount ++;
     }
+
 }

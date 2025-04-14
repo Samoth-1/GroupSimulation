@@ -13,6 +13,7 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    private boolean player = false;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -21,6 +22,19 @@ public class MyWorld extends World
         
     }
     
+    public void act()
+    {
+        if (!player)
+        {
+            Player1 p = new Player1 (230, 1, 1);
+            addObject(p, -100, -100);
+           
+            
+            Player1 l = new Player1 (500, 1, 2);
+            addObject(l, -100, -100);
+            player = true;
+        }
+    }
     public void drawChessBoard()
     {
         //Draw square cells with side length of 96. The x value start from 128, end at 800.
