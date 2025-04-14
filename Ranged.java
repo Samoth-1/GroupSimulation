@@ -7,10 +7,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 
-    private int atk = 90;
-    protected int atkspeed = 90;
+    
 public abstract class Ranged extends Chara
 {
+    protected int atk = 90;
+    protected int atkspeed = 90;
     public Ranged(int team, int pos){
         super(team,pos);
     }

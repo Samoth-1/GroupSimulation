@@ -15,8 +15,9 @@ public class Player1 extends Player
     public Player1(int gold, int type, int side)
     {
         super(gold, type, side);
-        shopping();
+        shopping(3);
         formation();
+        
 
     }
     
@@ -24,7 +25,8 @@ public class Player1 extends Player
     {
         spawn();
     }
-
+    
+    
 
     //triangle formation
     public void formation()
@@ -98,30 +100,5 @@ public class Player1 extends Player
     }
 
     //melee : ranged = 1:3. Minimun price of melee and ranged is 50
-    public void shopping()
-    {
-        int count = 0;
-        while (gold >= 50)
-        {
-            if (count % 3 == 0)
-            {
-                Test m = new Test (1);
-                meleeWishList.add(m);
-                gold = gold - m.getPrice();
-                //Melee m = new Melee()
-                //meleeWishList.add(m)
-            }
-            else
-            {
-                //Ranged r = new Ranged()
-                //rangedWishList.add(r)
-            }
-        }
-        for (Champion m : meleeWishList)
-        {
-            myCharacters.add(m);
-        }
-
-        //myCharacters.add(rangedWishList);
-    }
+    
 }

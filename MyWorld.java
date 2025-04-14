@@ -30,8 +30,7 @@ public class MyWorld extends World
             addObject(p, -100, -100);
            
             
-            Player1 l = new Player1 (500, 1, 2);
-            addObject(l, -100, -100);
+            
             player = true;
         }
     }
