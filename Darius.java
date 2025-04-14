@@ -8,10 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Darius extends Melee
 {
+    private GreenfootImage characterImage = new GreenfootImage("Darius.png");
     public Darius(int team, int pos)
     {
         super(team, pos);
-        //setImage(new GreenfootImage(""));
+        characterImage.scale(80,80);
+        setImage(characterImage);
     }
     public void act(){
         super.act();

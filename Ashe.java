@@ -1,10 +1,12 @@
 import greenfoot.*;
 public class Ashe extends Ranged 
 {
+    private GreenfootImage characterImage = new GreenfootImage("Ashe.png");
     public Ashe(int team, int pos)
     {
         super(team, pos);
-        //setImage(new GreenfootImage(""));
+        characterImage.scale(80,80);
+        setImage(characterImage);
     }
     public void act(){
         super.act();

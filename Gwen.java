@@ -8,10 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Gwen extends Melee
 {
+    private GreenfootImage characterImage = new GreenfootImage("Gwen.png");
     public Gwen(int team, int pos)
     {
         super(team, pos);
-        //setImage(new GreenfootImage(""));
+        characterImage.scale(80,80);
+        setImage(characterImage);
     }
     public void act(){
         super.act();
