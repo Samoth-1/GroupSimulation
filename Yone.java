@@ -27,7 +27,7 @@ public class Yone extends Melee
     public void ability(){// passive ability, lifesteal
         
     }
-    protected void attack(){
+    public void attack(){
         if(!inRange) return;
         if(atk==0){
             closest.dealDamage(damage);

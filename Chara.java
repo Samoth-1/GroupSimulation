@@ -24,7 +24,7 @@ public abstract class Chara extends Actor
         this.pos = pos;
         this.hp=hp;
     }
-    ArrayList<Chara> enemies;
+    ArrayList<Chara> enemies = new ArrayList<Chara> ();
     public void addedToWorld(){
         enemies = new ArrayList<Chara>();
         for(Chara c:getWorld().getObjects(Chara.class)){
@@ -35,9 +35,12 @@ public abstract class Chara extends Actor
     }
     public void act()
     {
+        if (enemies.size() != 0)
+        {
         target();
         attack();
         ability();
+    }
     }
     Chara closest;
     private void target(){
@@ -82,6 +85,10 @@ public abstract class Chara extends Actor
     }
     public int getHp(){
         return hp;
+    }
+    public int getPrice()
+    {
+        return price;
     }
 }
 
