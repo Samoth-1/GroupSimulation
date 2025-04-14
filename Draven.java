@@ -8,10 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Draven extends Ranged
 {
+    private GreenfootImage characterImage = new GreenfootImage("Draven.png");
     public Draven(int team, int pos)
     {
         super(team, pos);
-        //setImage(new GreenfootImage(""));
+        characterImage.scale(80,80);
+        setImage(characterImage);
     }
     public void act(){
         super.act();

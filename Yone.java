@@ -8,10 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Yone extends Melee
 {
+    private GreenfootImage characterImage = new GreenfootImage("Yone.png");
     public Yone(int team, int pos)
     {
         super(team, pos);
-        //setImage(new GreenfootImage(""));
+        characterImage.scale(80,80);
+        setImage(characterImage);
     }
     public void act(){
         super.act();
