@@ -91,5 +91,11 @@ public abstract class Chara extends Actor
     {
         return price;
     }
+    public void setSpeed(int t){
+        speed=t;
+    }
+    public void setAttackSpeed(int t){
+        atkspeed=t;
+    }
 }
 
