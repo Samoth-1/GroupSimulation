@@ -18,7 +18,7 @@ public class Kaisa extends Ranged
     public void act(){
         super.act();
     }
-    private int range = 10000;
+    private int range = 1100;
     private int damage = 40;
     private int hp = 500;
     private int speed = 5;
@@ -28,6 +28,12 @@ public class Kaisa extends Ranged
     }
     public void ability(){//passive ability, attacks furthest enemy instead
         
+    }
+    public void returnAttackSpeed(){
+        atkspeed = 90;
+    }
+    public void returnSpeed(){
+        speed = 5;
     }
     private void target(){
         closest = null;
