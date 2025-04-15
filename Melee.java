@@ -25,6 +25,6 @@ public abstract class Melee extends Chara
     }
     private void attackspeed(){
         if(atk>0)atk--;
-        else atk=90;
+        else atk=atkspeed;
     }
 }
