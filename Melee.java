@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public abstract class Melee extends Chara
 {
-    protected int atk = 90;
     public Melee(int team, int pos){
         super(team,pos);
     }
