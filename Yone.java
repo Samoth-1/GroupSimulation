@@ -27,10 +27,10 @@ public class Yone extends Melee
         
     }
     public void returnAttackSpeed(){
-        atkspeed = 90
+        atkspeed = 90;
     }
     public void returnSpeed(){
-        speed = 7
+        speed = 7;
     }
     public void ability(){// passive ability, lifesteal
         
