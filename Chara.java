@@ -10,7 +10,8 @@ public abstract class Chara extends Actor
 {
     protected int team;// team 1 or 2
     protected int pos; // which square on field
-    
+    protected int atk = 90;
+    protected int atkspeed = 90;
     protected int range;
     protected int damage;
     protected int hp;
