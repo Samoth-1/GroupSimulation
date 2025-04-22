@@ -10,22 +10,32 @@ public class Bullet extends Actor
 {
     private int team;
     private int beam;
+
     public Bullet(int team){
         this.team = team;
         if(team == 1) beam = 2;
         else beam = 1;
     }
-    public void act()
-    {
+
+    public void act() {
+        if (getWorld() == null) return;
+
         move(5);
-        Chara a = (Chara)getOneIntersectingObject(Chara.class);
+
+        // edge‐of‐screen cleanup
         if (isAtEdge()) {
             getWorld().removeObject(this);
-        }
-        if(a != null && a.getTeam()==beam){
-            getWorld().removeObject(a);
-            getWorld().removeObject(this);
             return;
+        }
+
+        // only interact with a live Chara
+        Chara target = (Chara)getOneIntersectingObject(Chara.class);
+        if (target != null && target.getWorld() != null && target.getTeam() == beam) {
+            target.dealDamage(10);
+            // now kill the bullet
+            if (getWorld() != null) {
+                getWorld().removeObject(this);
+            }
         }
     }
 }

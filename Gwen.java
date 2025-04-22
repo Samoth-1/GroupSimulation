@@ -18,7 +18,7 @@ public class Gwen extends Melee
     public void act(){
         super.act();
     }
-    private int range = 20;
+    
     private int damage = 0;
     private int hp = 800;
     private int speed = 6;

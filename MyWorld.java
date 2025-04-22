@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class MyWorld here.
  * 
@@ -13,26 +13,54 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    private boolean player = false;
+    private TextBar t1 = new TextBar("0", 200, Color.BLUE, Color.YELLOW);
+    private TextBar t2 = new TextBar("0", 200, Color.BLUE, Color.YELLOW);
+    private int random = Greenfoot.getRandomNumber(1);
+    private Player1 p1;
+    private Player1 p2;
+    public static boolean start;
+    
+    public static ArrayList<Integer> reserved = new ArrayList<Integer>();
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
         drawChessBoard();
-        
+        start = false;
     }
-    
+
     public void act()
     {
-        if (!player)
+        reserved.clear();
+        if (random == 0 && p1 == null) 
         {
-            Player1 p = new Player1 (230, 1, 1);
-            addObject(p, -100, -100);
-           
+            p1 = new Player1(500, 1, 1);
+            addObject(p1, -100, -100);
             
-            
-            player = true;
+            p2 = new Player1(500, 2, 2);
+            addObject(p2, -100, -100);
         }
+
+        if (p1 != null && p2 != null) 
+        {
+            t1.setText(String.valueOf(p1.getGold()));
+            t2.setText(String.valueOf(p2.getGold()));
+        }
+        
+        if (!p1.getSpawning() && !p2.getSpawning() && !start)
+        {
+            start = true;
+        }
+    }
+    
+    public static boolean assign(int position)
+    {
+        if (reserved.contains(position))
+        {
+            return true;
+        }
+        reserved.add(position);
+        return false;
     }
     public void drawChessBoard()
     {
@@ -56,7 +84,7 @@ public class MyWorld extends World
             }
             count ++;
         }
-        
+
         getBackground().setColor(Color.BLACK);
         for(int i = 128; i <= 896; i += 96)
         {
@@ -67,4 +95,5 @@ public class MyWorld extends World
             getBackground().drawLine(128, i, 896, i);
         }
     }
+ 
 }

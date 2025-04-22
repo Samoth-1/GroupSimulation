@@ -18,7 +18,7 @@ public class Yone extends Melee
     public void act(){
         super.act();
     }
-    private int range = 25;
+ 
     private int damage = 100;
     private int hp = 900;
     private int speed = 7;

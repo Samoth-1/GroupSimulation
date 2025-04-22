@@ -21,23 +21,65 @@ public abstract class Player extends Actor
     protected int type;
     protected int side;
     protected boolean prepare = true;
+    protected int X1 = 974;
+    protected int X2 = 50;
+    protected int Y = 50;
+    protected int i = 0;
+
     public Player(int gold, int type, int side)
     {
         this.gold = gold;
         this.type = type;
         this.side = side;
     }
-    
+
+    public void addedToWorld()
+    {
+
+    }
+
     public void act()
     {
+        preparing();
+        if (!prepare)
+        {
+            spawn();
+        }
     }
-    
+
     public abstract void formation();
-    
-    public void prepare()
+
+    public void preparing()
     {
-        actCount ++;
+        if (i >= myCharacters.size())
+        {
+            prepare = false;
+            i = 0;
+        }
+        if (prepare)
+        {
+            actCount ++;
+            if (actCount%60 == 0 && i < myCharacters.size() && side == 2)
+            {
+                getWorld().addObject(myCharacters.get(i), X1, Y);
+                myCharacters.get(i).getImage().mirrorHorizontally();
+                i += 1;
+                Y += 50;
+                actCount = 0;
+            }
+            if (actCount%60 == 0 && i < myCharacters.size() && side == 1)
+            {
+                getWorld().addObject(myCharacters.get(i), X2, Y);
+                
+                
+                i += 1;
+                Y += 50;
+                actCount = 0;
+            }
+        }
+
     }
+
     public void findMyTeam()
     {
         for (Chara c : myCharacters)
@@ -49,9 +91,9 @@ public abstract class Player extends Actor
         }
     }
 
-    public int getGold()
+    public String getGold()
     {
-        return gold;
+        return String.valueOf(gold);
     }
 
     public int convertX(int position) {
@@ -65,27 +107,33 @@ public abstract class Player extends Actor
     }
 
     protected int index = 0;
+    protected boolean spawning = true;
     public void spawn()
     {
-
-        
-        if (index < myCharacters.size() && actCount % 30 == 0)
+        if (index >= myCharacters.size())
         {
-            getWorld().addObject(myCharacters.get(index), convertX(positions.get(index)), convertY(positions.get(index)));
-            index += 1;
+            spawning = false;
         }
-        actCount ++;
+        if (spawning)
+        {
+            actCount ++;
+            if (index < myCharacters.size() && actCount % 30 == 0)
+            {
+                myCharacters.get(index).setLocation(convertX(positions.get(index)), convertY(positions.get(index)));
+                index += 1;
+            }
+        }
     }
-    
+
     public void shopping(int chance)
     {
         int count = 0;
         int size = 0;
         int r;
-        
-        while (gold >= 10 && size <= 10)
+
+        while (gold >= 10 && size < 10)
         {
-            if (count % chance == 0)
+            if (Greenfoot.getRandomNumber(chance) == 0)
             {
                 r = Greenfoot.getRandomNumber(5);
                 if (r == 0)
@@ -118,7 +166,7 @@ public abstract class Player extends Actor
                     meleeWishList.add(m);
                     gold = gold - m.getPrice();
                 }
-                }
+            }
 
             else
             {
@@ -165,7 +213,10 @@ public abstract class Player extends Actor
             myCharacters.add(m);
         }
 
-        
-        } 
+    } 
+    public boolean getSpawning()
+    {
+        return spawning;
     }
+}
 

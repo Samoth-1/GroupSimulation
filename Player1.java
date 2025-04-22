@@ -15,7 +15,7 @@ public class Player1 extends Player
     public Player1(int gold, int type, int side)
     {
         super(gold, type, side);
-        shopping(3);
+        shopping(2);
         formation();
         
 
@@ -23,11 +23,9 @@ public class Player1 extends Player
     
     public void act()
     {
-        spawn();
+        super.act();
     }
     
-    
-
     //triangle formation
     public void formation()
     {
@@ -40,7 +38,7 @@ public class Player1 extends Player
             count += 1;
             total += count;
         }
-
+        
         //calculate position from right to left
         //n row of triangle contain n objects
         //using coordnate (x, y) to solve the conversion
