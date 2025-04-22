@@ -34,6 +34,12 @@ public class Vayne extends Ranged
             timesattacked++;
         }
     }
+    public void returnAttackSpeed(){
+        atkspeed = 90;
+    }
+    public void returnSpeed(){
+        speed = 10;
+    }
     public void ability(){//every 3rd attack deals double damage
         if((timesattacked+1)%3==0){
             damage=100;
