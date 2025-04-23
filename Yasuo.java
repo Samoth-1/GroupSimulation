@@ -26,6 +26,12 @@ public class Yasuo extends Melee
     public void upgrade(){
         
     }
+    public void returnAttackSpeed(){
+        atkspeed = 90;
+    }
+    public void returnSpeed(){
+        speed = 7;
+    }
     public void ability(){// can crit at random times
         int a = Greenfoot.getRandomNumber(2);
         if(a==2){

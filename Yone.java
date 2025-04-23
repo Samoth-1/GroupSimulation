@@ -26,6 +26,12 @@ public class Yone extends Melee
     public void upgrade(){
         
     }
+    public void returnAttackSpeed(){
+        atkspeed = 90;
+    }
+    public void returnSpeed(){
+        speed = 7;
+    }
     public void ability(){// passive ability, lifesteal
         
     }
