@@ -18,7 +18,7 @@ public class Jax extends Melee
     public void act(){
         super.act();
     }
-    private int range = 25;
+   
     private int damage = 90;
     private int hp = 950;
     private int speed = 7;

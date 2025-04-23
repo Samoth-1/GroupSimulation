@@ -29,13 +29,9 @@ public class Kaisa extends Ranged
     public void ability(){//passive ability, attacks furthest enemy instead
         
     }
-    public void returnAttackSpeed(){
-        atkspeed = 90;
-    }
-    public void returnSpeed(){
-        speed = 5;
-    }
-    private void target(){
+
+    public void target(){
+
         closest = null;
         int shortestDistance = Integer.MIN_VALUE;
         for(Chara c:enemies){

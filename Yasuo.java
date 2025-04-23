@@ -18,7 +18,7 @@ public class Yasuo extends Melee
     public void act(){
         super.act();
     }
-    private int range = 25;
+ 
     private int damage = 75;
     private int hp = 800;
     private int speed = 7;

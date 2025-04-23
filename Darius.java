@@ -19,7 +19,7 @@ public class Darius extends Melee
         super.act();
         timer++;
     }
-    private int range = 20;
+    
     private int damage = 80;
     private int hp = 1000;
     private int speed = 5;
