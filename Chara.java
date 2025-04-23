@@ -10,7 +10,7 @@ public abstract class Chara extends SuperSmoothMover
 {
     protected int team;// team 1 or 2
     protected int pos; // which square on field
-    
+
     protected int atkspeed = 90;
     protected int atk = 90;
     protected int range;
@@ -68,10 +68,8 @@ public abstract class Chara extends SuperSmoothMover
     protected boolean moveX;
     protected boolean moveY;
     protected int assignedPosition;
-    protected boolean onLeftEdge;
-    protected boolean onRightEdge;
-    protected boolean onTopEdge;
-    protected boolean onBottomEdge;
+    protected int random;
+ 
     public void target(){
         moveCount++;
         closest = null;
@@ -86,82 +84,92 @@ public abstract class Chara extends SuperSmoothMover
                 closest=c;
             }
         }
-         if (moveCount >= 300)
+        if (moveCount >= 300)
         {
             if(closest!=null&&coordinateDistance>range)
             {
-                if (Greenfoot.getRandomNumber(2) == 0)
+                random = Greenfoot.getRandomNumber(2);
+                if (closest.getY() == getY())
                 {
-                    moveX = false;
-                    moveY = false;
-                    if (closest.getX() < getX())
+                    changeX();
+                }
+                else if (closest.getX() == getX())
+                {
+                    changeY();
+                }
+                else 
+                {
+                    if (random == 0)
                     {
-                        newX = getX() - 96;
+                        changeX();
                     }
                     else
                     {
-                        newX = getX() + 96;
+                        changeY();
                     }
-                    assignedPosition = convertPosition(newX, getY());
-                    if (!MyWorld.assign(assignedPosition))
-                    {
-                        moveX = true;
-                        moveY = false;
-                    }
-                }
-                else
-                {
-                    moveX = false;
-                    moveY = false;
-                    if (closest.getY() < getY())
-                    {
-                        newY = getY() - 96;
-                    }
-                    else
-                    {
-                        newY = getY() + 96;
-                    }
-                    assignedPosition = convertPosition(getX(), newY);
-                    if (!MyWorld.assign(assignedPosition))
-                    {
-                        moveX = false;
-                        moveY = true;
-                    }
-                }
-                inRange=false;
+                }                
                 if (!moveX && !moveY)
                 {
                     assignedPosition = convertPosition(getX(), getY());
-                    if (MyWorld.assign(assignedPosition))
-                    {
-                        assignedPosition += 1;
-                        if (MyWorld.assign(assignedPosition))
-                        {
-                            assignedPosition -= 1;
-                            if (MyWorld.assign(assignedPosition))
-                            {
-                                assignedPosition += 8;
-                                if (MyWorld.assign(assignedPosition))
-                                {
-                                    assignedPosition -= 8;
-                                    MyWorld.assign(assignedPosition);
-                                }
-                            }
-                        }
-                    }
+                    MyWorld.assign(assignedPosition);
+                   
                 }
             }
+            inRange=false;
             moveCount = 0;
         }
         if(closest!=null&&coordinateDistance<=range)
         {
-                inRange=true;
+            inRange=true;
         }
     }
 
     public int convertPosition (int x, int y)
     {
         return (x - 128) / 96 + (y - 16) / 96 * 8;
+    }
+
+    public void changeX()
+    {
+        if (closest.getY() == getY())
+        {
+            moveX = false;
+            moveY = false;
+            if (closest.getX() < getX())
+            {
+                newX = getX() - 96;
+            }
+            if (closest.getX() > getX())
+            {
+                newX = getX() + 96;
+            }
+            assignedPosition = convertPosition(newX, getY());
+            if (!MyWorld.assign(assignedPosition))
+            {
+                moveX = true;
+                moveY = false;
+            }
+        }
+    }
+
+    public void changeY()
+    {
+        moveX = false;
+        moveY = false;
+        if (closest.getY() < getY())
+        {
+            newY = getY() - 96;
+        }
+        else
+        {
+            newY = getY() + 96;
+        }
+        assignedPosition = convertPosition(getX(), newY);
+        if (!MyWorld.assign(assignedPosition))
+        {
+            moveX = false;
+            moveY = true;
+        }
     }
 
     public void moving()
@@ -195,8 +203,18 @@ public abstract class Chara extends SuperSmoothMover
             {
                 moveY = false;
             }
-
         }
+    }
+    
+
+    public int convertX(int position) {
+        int col = position % 8;
+        return 128 + col * 96 + 48;  
+    }
+
+    public int convertY(int position) {
+        int row = position / 8;
+        return 16 + row * 96 + 48;
     }
 
     protected abstract void attack();
@@ -231,11 +249,14 @@ public abstract class Chara extends SuperSmoothMover
     {
         return price;
     }
+
     public void setSpeed(int t){
         speed=t;
     }
+
     public void setAttackSpeed(int t){
         atkspeed=t;
     }
+
 }
 

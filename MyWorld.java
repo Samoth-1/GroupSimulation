@@ -19,7 +19,7 @@ public class MyWorld extends World
     private Player1 p1;
     private Player1 p2;
     public static boolean start;
-    
+
     private static ArrayList<Integer> reserved = new ArrayList<Integer>();
     public MyWorld()
     {    
@@ -36,7 +36,7 @@ public class MyWorld extends World
         {
             p1 = new Player1(500, 1, 1);
             addObject(p1, -100, -100);
-            
+
             p2 = new Player1(500, 2, 2);
             addObject(p2, -100, -100);
         }
@@ -46,13 +46,13 @@ public class MyWorld extends World
             t1.setText(String.valueOf(p1.getGold()));
             t2.setText(String.valueOf(p2.getGold()));
         }
-        
+
         if (!p1.getSpawning() && !p2.getSpawning() && !start)
         {
             start = true;
         }
     }
-    
+
     public static boolean assign(int position)
     {
         if (reserved.contains(position))
@@ -62,8 +62,7 @@ public class MyWorld extends World
         reserved.add(position);
         return false;
     }
-    
-    
+
     public void drawChessBoard()
     {
         //Draw square cells with side length of 96. The x value start from 128, end at 800.
@@ -97,5 +96,5 @@ public class MyWorld extends World
             getBackground().drawLine(128, i, 896, i);
         }
     }
- 
+
 }
