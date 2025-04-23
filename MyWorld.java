@@ -20,7 +20,7 @@ public class MyWorld extends World
     private Player1 p2;
     public static boolean start;
     
-    public static ArrayList<Integer> reserved = new ArrayList<Integer>();
+    private static ArrayList<Integer> reserved = new ArrayList<Integer>();
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -62,6 +62,8 @@ public class MyWorld extends World
         reserved.add(position);
         return false;
     }
+    
+    
     public void drawChessBoard()
     {
         //Draw square cells with side length of 96. The x value start from 128, end at 800.

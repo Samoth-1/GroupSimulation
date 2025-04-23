@@ -66,6 +66,10 @@ public abstract class Chara extends SuperSmoothMover
     protected boolean moveX;
     protected boolean moveY;
     protected int assignedPosition;
+    protected boolean onLeftEdge;
+    protected boolean onRightEdge;
+    protected boolean onTopEdge;
+    protected boolean onBottomEdge;
     public void target(){
         moveCount++;
         closest = null;
@@ -80,7 +84,7 @@ public abstract class Chara extends SuperSmoothMover
                 closest=c;
             }
         }
-        if (moveCount >= 300)
+         if (moveCount >= 300)
         {
             if(closest!=null&&coordinateDistance>range)
             {
@@ -126,7 +130,23 @@ public abstract class Chara extends SuperSmoothMover
                 if (!moveX && !moveY)
                 {
                     assignedPosition = convertPosition(getX(), getY());
-                    MyWorld.assign(assignedPosition);
+                    if (MyWorld.assign(assignedPosition))
+                    {
+                        assignedPosition += 1;
+                        if (MyWorld.assign(assignedPosition))
+                        {
+                            assignedPosition -= 1;
+                            if (MyWorld.assign(assignedPosition))
+                            {
+                                assignedPosition += 8;
+                                if (MyWorld.assign(assignedPosition))
+                                {
+                                    assignedPosition -= 8;
+                                    MyWorld.assign(assignedPosition);
+                                }
+                            }
+                        }
+                    }
                 }
             }
             moveCount = 0;
@@ -144,7 +164,6 @@ public abstract class Chara extends SuperSmoothMover
 
     public void moving()
     {
-
         if (moveX)
         {
             if (newX < getX())
