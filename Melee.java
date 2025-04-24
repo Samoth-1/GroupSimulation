@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class m here.
+ * Super class for melees
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * By Ricky Z
  */
 
 public abstract class Melee extends Chara

@@ -1,23 +1,18 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
 /**
- * Write a description of class Player1 here.
+ * A specific player that want a triangle formation
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * By Thomas Wu
  */
 public class Player1 extends Player
 {
-    /**
-     * Act - do whatever the Player1 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
     public Player1(int gold, int type, int side)
     {
         super(gold, type, side);
         shopping(2);
         formation();
-        
 
     }
     
@@ -97,6 +92,5 @@ public class Player1 extends Player
         }
     }
 
-    //melee : ranged = 1:3. Minimun price of melee and ranged is 50
     
 }

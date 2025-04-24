@@ -1,10 +1,9 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; 
 
 /**
- * Write a description of class Bullet here.
+ * A bullet class that create bullet for long range characters
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * By Ricky Z
  */
 public class Bullet extends Actor
 {

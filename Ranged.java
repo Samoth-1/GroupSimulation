@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Ranged here.
+ * Superclass for Ranged
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * By Ricky Z
  */
 
     

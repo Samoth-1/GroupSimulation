@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Darius here.
+ * Actual character
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * By Ricky Z
+ * Since the author and the content is all same for all actual characters, I will not repeat the comment above again
  */
 public class Darius extends Melee
 {

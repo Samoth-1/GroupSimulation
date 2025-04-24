@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class Chara here.
+ * The super class for actual characters
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Oringinal version be Ricky Z
+ * Moving algorithm and bug fix by Thomas W
  */
 public abstract class Chara extends SuperSmoothMover
 {
@@ -39,9 +39,10 @@ public abstract class Chara extends SuperSmoothMover
             getWorld().removeObject(this);
             return;
         }
-
+        
+        //The characters start to detect enemy when the world calls start
         if (MyWorld.start) {
-
+            //ArrayList to find all enemies
             enemies.clear();
             for (Chara c : getWorld().getObjects(Chara.class)) {
                 if (c.getTeam() != team) {
@@ -70,10 +71,15 @@ public abstract class Chara extends SuperSmoothMover
     protected int assignedPosition;
     protected int random;
  
+    //A target class to find closest enemy and assign the destination spot.
+    //There are still overlapping exist, but it will get way too complicated if want to completely avoid overlapping
+    //if a character want to move, it first need to assign its destination spot into an arrayList in World
+    //if that spot already exist, the character will not move
     public void target(){
         moveCount++;
         closest = null;
         int shortestDistance = Integer.MAX_VALUE;
+        //find closest enemy
         for(Chara c:enemies){
             dx = (Math.abs(c.getX()-getX()))/96;
             dy = (Math.abs(c.getY()-getY()))/96;
@@ -89,6 +95,9 @@ public abstract class Chara extends SuperSmoothMover
             if(closest!=null&&coordinateDistance>range)
             {
                 random = Greenfoot.getRandomNumber(2);
+                // if the enemy is on the same row, move horizontally
+                // if on the same column, move vertically
+                // if neither, roll the dice
                 if (closest.getY() == getY())
                 {
                     changeX();
@@ -108,6 +117,7 @@ public abstract class Chara extends SuperSmoothMover
                         changeY();
                     }
                 }                
+                // if not moving, assign the current location.
                 if (!moveX && !moveY)
                 {
                     assignedPosition = convertPosition(getX(), getY());
@@ -124,17 +134,20 @@ public abstract class Chara extends SuperSmoothMover
         }
     }
 
+    //convert coordinate to position number
     public int convertPosition (int x, int y)
     {
         return (x - 128) / 96 + (y - 16) / 96 * 8;
     }
 
+    //if the character is moving horizontally
     public void changeX()
     {
         if (closest.getY() == getY())
         {
             moveX = false;
             moveY = false;
+            //if the enemy is on the left, move to the left, vice versa
             if (closest.getX() < getX())
             {
                 newX = getX() - 96;
@@ -143,6 +156,7 @@ public abstract class Chara extends SuperSmoothMover
             {
                 newX = getX() + 96;
             }
+            //assign destination
             assignedPosition = convertPosition(newX, getY());
             if (!MyWorld.assign(assignedPosition))
             {
@@ -151,7 +165,8 @@ public abstract class Chara extends SuperSmoothMover
             }
         }
     }
-
+    
+    //exactly same logic as changeX, but move vertically
     public void changeY()
     {
         moveX = false;
@@ -172,8 +187,10 @@ public abstract class Chara extends SuperSmoothMover
         }
     }
 
+    //The actual moving method.
     public void moving()
     {
+        //move 2 cells per act horizontally
         if (moveX)
         {
             if (newX < getX())
@@ -189,6 +206,7 @@ public abstract class Chara extends SuperSmoothMover
                 moveX = false;
             }
         }
+        //move 2 cells per act vertically
         if (moveY)
         {
             if (newY < getY())
@@ -206,7 +224,7 @@ public abstract class Chara extends SuperSmoothMover
         }
     }
     
-
+    
     public int convertX(int position) {
         int col = position % 8;
         return 128 + col * 96 + 48;  
