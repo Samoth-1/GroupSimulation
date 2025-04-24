@@ -21,7 +21,7 @@ public abstract class Melee extends Chara
     {
         super.act();
         if(isSpinning){
-            spinAnimation();
+            
         }else{
             attackspeed();
         }
