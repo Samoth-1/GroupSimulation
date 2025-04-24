@@ -1,7 +1,7 @@
 import greenfoot.*;  
 /**
  * A class to create a simple textbar
- * Author: Thomas Wu
+ * By Thomas Wu
  */
 public class TextBar extends Actor
 {

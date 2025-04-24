@@ -1,12 +1,10 @@
-------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all they need to know. The comments should usually include at least:
-------------------------------------------------------------------------
+PROJECT TITLE: Group Simulation
+VERSION or DATE: 4/23/2025
+AUTHORS: Thomas W, Ricky Z, Daniel L
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+This is an auto battle chess simulation. Players will use the amount of gold that user enter, and purchase characters. Players were planned to also be able to purchase certain effect that affect enemies or their own team, 
+but due to a time issue, it is not completed.
+The player will determine the formation of these characters, and the ratio of ranged and melee characters.
+Characters will follow a certain move algorithm that let them move like actual chess on chess board.
+Each character has unique hp, damage, range, etc. Skills were originally planned, but is not completed also due to
+time issue.
