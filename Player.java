@@ -218,5 +218,14 @@ public abstract class Player extends Actor
     {
         return spawning;
     }
+    public boolean hasAliveCharacters() {
+        for (Chara c : myCharacters) {
+            if (c.getWorld() != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
