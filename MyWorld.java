@@ -45,6 +45,13 @@ public class MyWorld extends World
         {
             t1.setText(String.valueOf(p1.getGold()));
             t2.setText(String.valueOf(p2.getGold()));
+            if (start) {
+                if (!p1.hasAliveCharacters()) {
+                    Greenfoot.setWorld(new EndWorld(2));
+                } else if (!p2.hasAliveCharacters()) {
+                    Greenfoot.setWorld(new EndWorld(1));
+                }
+            }
         }
 
         if (!p1.getSpawning() && !p2.getSpawning() && !start)
