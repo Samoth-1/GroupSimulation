@@ -30,6 +30,7 @@ public class MyWorld extends World
         drawChessBoard();
         start = false;
         player = true;
+        Greenfoot.setWorld(new StartWorld());
     }
 
     public void act()
@@ -77,18 +78,18 @@ public class MyWorld extends World
         {
             t1.setText(String.valueOf(p1.getGold()));
             t2.setText(String.valueOf(p2.getGold()));
-<<<<<<< Updated upstream
+
+            //if both players are done preparing, start the fight
+            if (!p1.getSpawning() && !p2.getSpawning() && !start)
+            {
+                start = true;
+            }
             if (start) {
                 if (!p1.hasAliveCharacters()) {
                     Greenfoot.setWorld(new EndWorld(2));
                 } else if (!p2.hasAliveCharacters()) {
                     Greenfoot.setWorld(new EndWorld(1));
                 }
-=======
-            //if both players are done preparing, start the fight
-            if (!p1.getSpawning() && !p2.getSpawning() && !start)
-            {
-                start = true;
             }
         }
         if (p1 != null && p3 != null)
@@ -99,6 +100,13 @@ public class MyWorld extends World
             {
                 start = true;
             }
+            if (start) {
+                if (!p1.hasAliveCharacters()) {
+                    Greenfoot.setWorld(new EndWorld(2));
+                } else if (!p3.hasAliveCharacters()) {
+                    Greenfoot.setWorld(new EndWorld(1));
+                }
+            }
         }
         if (p3 != null && p4 != null)
         {
@@ -107,14 +115,18 @@ public class MyWorld extends World
             if (!p3.getSpawning() && !p4.getSpawning() && !start)
             {
                 start = true;
->>>>>>> Stashed changes
+
+            }
+            if (start) {
+                if (!p3.hasAliveCharacters()) {
+                    Greenfoot.setWorld(new EndWorld(2));
+                } else if (!p4.hasAliveCharacters()) {
+                    Greenfoot.setWorld(new EndWorld(1));
+                }
             }
         }
 
-        
-
     }
-
     //method to assign position. check character class for details
     public static boolean assign(int position)
     {

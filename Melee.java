@@ -13,6 +13,7 @@ public abstract class Melee extends Chara
     private boolean isSpinning = false;
     protected int atk = 90;
     protected int range = 97;
+    protected int spinFrames;
     public Melee(int team, int pos){
         super(team,pos);
         originalImage = getImage();

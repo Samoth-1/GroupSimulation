@@ -23,7 +23,7 @@ public abstract class Ranged extends Chara
             shootProjectile();
         }
     }
-    private void attackspeed(){
+    protected void attackspeed(){
         if(atk>0)atk--;
         else atk=atkspeed;
     }
