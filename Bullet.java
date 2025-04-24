@@ -12,6 +12,10 @@ public class Bullet extends Actor
     private int beam;
 
     public Bullet(int team){
+        GreenfootImage image = new GreenfootImage(32,32);
+        image.setColor(Color.BLACK);
+        image.fillOval(0, 0, 32, 32);
+        setImage(image);
         this.team = team;
         if(team == 1) beam = 2;
         else beam = 1;
